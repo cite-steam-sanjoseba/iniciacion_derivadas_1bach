@@ -2,11 +2,11 @@
 
 Recurso didáctico web para introducir las derivadas en **Matemáticas Generales de 1.º de Bachillerato General**, partiendo de la **tasa de variación media** y llegando de forma progresiva a las primeras **reglas de derivación**.
 
-**Materia:** Matemáticas Generales · 1.º Bachillerato General
-**Profesora:** Cristina Ramos García
-**Centro:** IES San José · Badajoz
-**Proyecto:** CITE-STEAM “IA, FP y robótica inclusiva”
-**Enlace:** https://cite-steam-sanjoseba.github.io/iniciacion_derivadas_1bach/
+##**Materia:** Matemáticas Generales · 1.º Bachillerato General
+##**Profesora:** Cristina Ramos García
+##**Centro:** IES San José · Badajoz
+##**Proyecto:** CITE-STEAM “IA, FP y robótica inclusiva”
+##**Enlace:** https://cite-steam-sanjoseba.github.io/iniciacion_derivadas_1bach/
 
 ---
 
