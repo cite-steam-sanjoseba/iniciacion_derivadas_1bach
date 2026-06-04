@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iniciación a las derivadas · 1º Bachillerato General</title>
-  <!-- v4.2 · corrección MathJax: tabla de h con fracción y ficha sin f^{\prime}(x) -->
   <meta name="description" content="Web interactiva para iniciar las derivadas en Matemáticas Generales de 1º de Bachillerato General." />
+  <!-- v9 · MathJax unificado en bloques 3, 4 y 5. Sin traductor cutre ni radios desalineados. -->
 
   <script>
     window.MathJax = {
@@ -37,6 +37,7 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
+      overflow-x:hidden;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
         radial-gradient(circle at top left, rgba(32,217,195,.20), transparent 28rem),
@@ -58,8 +59,8 @@
     .hero-grid{display:grid; grid-template-columns:140px 1fr; gap:24px; align-items:center}
     .logo-box{background:#fff; border:4px solid var(--azul); border-radius:28px; padding:10px; box-shadow:var(--sombra)}
     .logo-box img{display:block; width:100%; height:auto}
-    .eyebrow{font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--turquesa-2); font-size:.86rem}
-    h1{margin:.1rem 0 .4rem; font-size:clamp(2rem, 5vw, 4.15rem); line-height:1.03; color:var(--azul); letter-spacing:-.03em; font-weight:650}
+    .eyebrow{font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--turquesa-2); font-size:.86rem}
+    h1{margin:.1rem 0 .4rem; font-size:clamp(2rem, 5vw, 4.6rem); line-height:1; color:var(--azul); letter-spacing:-.06em}
     .subtitle{font-size:clamp(1.05rem, 2vw, 1.45rem); max-width:880px; color:var(--azul-2); margin:0 0 1rem}
     .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
     .chip{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--borde); border-radius:999px; padding:8px 12px; background:#fff; font-weight:750; color:var(--azul)}
@@ -71,7 +72,7 @@
       backdrop-filter:blur(12px);
     }
     nav .wrap{display:flex; gap:8px; overflow:auto; padding:10px 0}
-    nav a{white-space:nowrap; text-decoration:none; color:var(--azul); font-weight:600; border:1px solid transparent; padding:9px 12px; border-radius:999px}
+    nav a{white-space:nowrap; text-decoration:none; color:var(--azul); font-weight:800; border:1px solid transparent; padding:9px 12px; border-radius:999px}
     nav a:hover, nav a:focus{background:var(--azul); color:#fff}
     main{padding:28px 0 80px}
     section{scroll-margin-top:76px; margin:26px 0}
@@ -84,8 +85,8 @@
     }
     .section-head{display:flex; align-items:flex-start; gap:16px; margin-bottom:18px}
     .num{flex:0 0 auto; width:42px; height:42px; display:grid; place-items:center; border-radius:14px; background:var(--azul); color:#fff; font-weight:900; box-shadow:0 8px 18px rgba(40,52,138,.22)}
-    h2{font-size:clamp(1.45rem, 3vw, 2.15rem); line-height:1.12; margin:0; color:var(--azul); font-weight:650; letter-spacing:-.018em}
-    h3{color:var(--azul); margin:1.25rem 0 .55rem; font-size:1.18rem; font-weight:650}
+    h2{font-size:clamp(1.5rem, 3vw, 2.4rem); line-height:1.08; margin:0; color:var(--azul)}
+    h3{color:var(--azul); margin:1.25rem 0 .55rem; font-size:1.25rem}
     .lead{font-size:1.08rem; margin:.4rem 0 0; color:var(--gris)}
     .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
     .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
@@ -98,7 +99,7 @@
       padding:14px 16px;
       border-radius:14px;
       overflow:auto;
-      font-weight:650;
+      font-weight:750;
       font-size:1.06rem;
     }
     .formula mjx-container{
@@ -108,7 +109,7 @@
     }
     .note{border:1px dashed var(--turquesa-2); background:rgba(32,217,195,.10); border-radius:18px; padding:14px 16px; margin:14px 0}
     .warning{border:1px solid rgba(242,184,75,.65); background:rgba(242,184,75,.13); border-radius:18px; padding:14px 16px; margin:14px 0}
-    label{font-weight:650; display:block; margin:12px 0 6px; color:var(--azul)}
+    label{font-weight:800; display:block; margin:12px 0 6px; color:var(--azul)}
     input, select, button, textarea{
       font:inherit;
     }
@@ -116,10 +117,11 @@
       width:100%; border:1px solid var(--borde); border-radius:14px; padding:12px 14px; background:#fff; color:var(--azul-2); outline:none;
     }
     input:focus, select:focus, textarea:focus{border-color:var(--turquesa-2); box-shadow:0 0 0 4px rgba(32,217,195,.16)}
+    input[type=radio], input[type=checkbox]{width:auto; box-shadow:none}
     .row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
     .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
     button, .button-like{
-      border:0; border-radius:999px; padding:11px 16px; background:var(--azul); color:#fff; font-weight:650; cursor:pointer; box-shadow:0 8px 18px rgba(40,52,138,.18); text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+      border:0; border-radius:999px; padding:11px 16px; background:var(--azul); color:#fff; font-weight:900; cursor:pointer; box-shadow:0 8px 18px rgba(40,52,138,.18); text-decoration:none; display:inline-flex; align-items:center; gap:8px;
     }
     button:hover{transform:translateY(-1px)}
     button.secondary{background:#fff; color:var(--azul); border:1px solid var(--borde); box-shadow:none}
@@ -139,27 +141,25 @@
     .exercise-box{display:grid; grid-template-columns:1.1fr .9fr; gap:18px; align-items:start}
     .choices{display:grid; gap:10px; margin-top:12px}
     .choice{border:1px solid var(--borde); background:#fff; color:var(--azul-2); box-shadow:none; border-radius:16px; padding:12px 14px; text-align:left; justify-content:flex-start}
-    .choice .math-opt, label .math-opt{display:inline-block; vertical-align:middle}
-    .quiz-option{font-weight:500!important; color:var(--azul-2)!important; margin:8px 0!important; display:flex!important; align-items:center; gap:8px; line-height:1.35}
-    .quiz-option input{flex:0 0 auto; margin:0!important}
-    #tablaLim th mjx-container{font-size:1.05em}
-    #tablaLim td{vertical-align:middle}
-    #fichaRefuerzo li{margin:8px 0; line-height:1.65}
-    #fichaRefuerzo mjx-container[jax="SVG"]{display:inline-block; max-width:100%; vertical-align:-.18em}
-    .math-help{font-size:.98rem; color:var(--gris); margin:.55rem 0 0}
-    .soft-title{font-weight:650}
     .choice.correct{border-color:rgba(22,140,100,.55); background:rgba(22,140,100,.09)}
     .choice.incorrect{border-color:rgba(192,57,43,.55); background:rgba(192,57,43,.09)}
     .progress{height:12px; border-radius:999px; background:#E8EDFF; overflow:hidden; margin:10px 0 4px}
     .bar{height:100%; width:0%; background:linear-gradient(90deg,var(--turquesa),var(--azul)); transition:.35s ease}
     details{border:1px solid var(--borde); border-radius:18px; padding:14px 16px; background:#fff; margin:12px 0}
-    summary{font-weight:650; color:var(--azul); cursor:pointer}
+    summary{font-weight:900; color:var(--azul); cursor:pointer}
     .two-col-list{columns:2; column-gap:32px}
     .print-sheet{background:#fff; border:1px solid var(--borde); border-radius:20px; padding:18px; margin-top:16px}
     .print-sheet ol{margin-top:8px}
     footer{padding:26px 0 46px; color:var(--gris); text-align:center; border-top:1px solid var(--borde); background:#fff}
     .tiny{font-size:.92rem; color:var(--gris)}
     .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; border:1px solid var(--borde); border-bottom-width:3px; padding:1px 6px; border-radius:6px; background:#fff; color:var(--azul)}
+    .quiz-item{margin:12px 0}
+    .quiz-question{font-weight:700; color:var(--azul-2); margin-bottom:12px}
+    .quiz-options{display:grid; gap:8px; align-items:start}
+    .quiz-btn{width:100%; border:1px solid var(--borde); background:#fff; color:var(--azul-2); box-shadow:none; border-radius:16px; padding:12px 14px; text-align:left; justify-content:flex-start; font-weight:650}
+    .quiz-btn.selected{outline:3px solid rgba(32,217,195,.28); border-color:var(--turquesa-2)}
+    .quiz-btn.correct{border-color:rgba(22,140,100,.65); background:rgba(22,140,100,.10)}
+    .quiz-btn.incorrect{border-color:rgba(192,57,43,.65); background:rgba(192,57,43,.10)}
     @media (max-width: 860px){
       .hero-grid, .grid-2, .grid-3, .exercise-box{grid-template-columns:1fr}
       .logo-box{width:132px}
@@ -224,14 +224,13 @@
         </div>
         <div class="mini">
           <h3>2. Cambio instantáneo</h3>
-          <p>Acercamos el segundo punto a <strong>a</strong>. La forma natural, viniendo de la TVM, es esta:</p>
-          <div class="formula">\[f^{\prime}(a)=\lim_{x\to a}\dfrac{f(x)-f(a)}{x-a}\]</div>
-          <p class="math-help">Después escribimos \(x=a+h\). Entonces \(h=x-a\) y la fórmula se convierte en la versión con \(h\).</p>
+          <p>Acercamos los dos puntos cada vez más. Ahí aparece la derivada en un punto.</p>
+          <div class="formula">\[f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}\]</div>
         </div>
         <div class="mini">
           <h3>3. Reglas rápidas</h3>
           <p>Después dejamos los límites y trabajamos con reglas: suma, producto, cociente, potencia y cadena.</p>
-          <div class="formula">\[\text{Si } f(x)=x^n,\quad f^{\prime}(x)=n\cdot x^{n-1}\]</div>
+          <div class="formula">\[\text{Si } f(x)=x^n,\quad f'(x)=n\cdot x^{n-1}\]</div>
         </div>
       </div>
       <div class="warning">
@@ -303,14 +302,8 @@
         <div class="num">2</div>
         <div>
           <h2>Derivada usando límites: solo las más sencillas</h2>
-          <p class="lead">Antes de usar reglas, deducimos unas pocas derivadas básicas. La derivada nace como límite de una TVM cuando los dos puntos se juntan.</p>
+          <p class="lead">Antes de usar reglas, deducimos unas pocas derivadas básicas. Después dejamos los límites a un lado.</p>
         </div>
-      </div>
-      <div class="note">
-        <p><strong>Primero, desde la TVM:</strong></p>
-        <div class="formula">\[f^{\prime}(a)=\lim_{x\to a}\dfrac{f(x)-f(a)}{x-a}\]</div>
-        <p>Esta expresión compara el punto fijo \(a\) con otro punto \(x\) cada vez más cercano. Para calcularlo con más comodidad se escribe \(x=a+h\). Así, \(x-a=h\), y obtenemos:</p>
-        <div class="formula">\[f^{\prime}(a)=\lim_{h\to 0}\dfrac{f(a+h)-f(a)}{h}\]</div>
       </div>
       <div class="grid-2">
         <div>
@@ -344,17 +337,17 @@
         <div class="mini">
           <h3>Constante</h3>
           <p>Si una función no cambia, su derivada es 0.</p>
-          <div class="formula">\[f(x)=c\quad\Longrightarrow\quad f^{\prime}(x)=0\]</div>
+          <div class="formula">\[f(x)=c\quad\Longrightarrow\quad f'(x)=0\]</div>
         </div>
         <div class="mini">
           <h3>Identidad</h3>
           <p>La función f(x)=x cambia al mismo ritmo que x.</p>
-          <div class="formula">\[f(x)=x\quad\Longrightarrow\quad f^{\prime}(x)=1\]</div>
+          <div class="formula">\[f(x)=x\quad\Longrightarrow\quad f'(x)=1\]</div>
         </div>
         <div class="mini">
           <h3>Cuadrática básica</h3>
           <p>Para f(x)=x², la pendiente depende del punto.</p>
-          <div class="formula">\[f(x)=x^2\quad\Longrightarrow\quad f^{\prime}(x)=2x\]</div>
+          <div class="formula">\[f(x)=x^2\quad\Longrightarrow\quad f'(x)=2x\]</div>
         </div>
       </div>
     </section>
@@ -371,11 +364,11 @@
         <div class="rule-card"><strong>Constante</strong><div class="formula">\[(c)'=0\]</div><span class="pill">Ejemplo: \((7)'=0\)</span></div>
         <div class="rule-card"><strong>Función x</strong><div class="formula">\[(x)'=1\]</div><span class="pill">Ejemplo: \((x)'=1\)</span></div>
         <div class="rule-card"><strong>Potencia</strong><div class="formula">\[(x^n)'=n\cdot x^{n-1}\]</div><span class="pill">Ejemplo: \((x^3)'=3x^2\)</span></div>
-        <div class="rule-card"><strong>Número por función</strong><div class="formula">\[(k\cdot f)^{\prime}=k\cdot f^{\prime}\]</div><span class="pill">Ejemplo: \((4x^2)'=8x\)</span></div>
-        <div class="rule-card"><strong>Suma o resta</strong><div class="formula">\[(f\pm g)^{\prime}=f^{\prime}\pm g^{\prime}\]</div><span class="pill">Ejemplo: \((x^2+3x)'=2x+3\)</span></div>
-        <div class="rule-card"><strong>Producto</strong><div class="formula">\[(f\cdot g)^{\prime}=f^{\prime}\cdot g+f\cdot g^{\prime}\]</div><span class="pill">Cuidado: no es \(f^{\prime}\cdot g^{\prime}\)</span></div>
-        <div class="rule-card"><strong>Cociente</strong><div class="formula">\[\left(\dfrac{f}{g}\right)^{\prime}=\dfrac{f^{\prime}\cdot g-f\cdot g^{\prime}}{g^2}\]</div><span class="pill">Siempre que g no sea 0</span></div>
-        <div class="rule-card"><strong>Regla de la cadena</strong><div class="formula">\[\bigl(g(x)^n\bigr)^{\prime}=n\cdot g(x)^{n-1}\cdot g^{\prime}(x)\]</div><span class="pill">Ejemplo: \(((2x+1)^3)^{\prime}=6(2x+1)^2\)</span></div>
+        <div class="rule-card"><strong>Número por función</strong><div class="formula">\[(k\cdot f)'=k\cdot f'\]</div><span class="pill">Ejemplo: \((4x^2)'=8x\)</span></div>
+        <div class="rule-card"><strong>Suma o resta</strong><div class="formula">\[(f\pm g)'=f'\pm g'\]</div><span class="pill">Ejemplo: \((x^2+3x)'=2x+3\)</span></div>
+        <div class="rule-card"><strong>Producto</strong><div class="formula">\[(f\cdot g)'=f'\cdot g+f\cdot g'\]</div><span class="pill">Cuidado: no es \(f'\cdot g'\)</span></div>
+        <div class="rule-card"><strong>Cociente</strong><div class="formula">\[\left(\frac{f}{g}\right)'=\frac{f'\cdot g-f\cdot g'}{g^2}\]</div><span class="pill">Siempre que g no sea 0</span></div>
+        <div class="rule-card"><strong>Regla de la cadena</strong><div class="formula">\[\bigl(g(x)^n\bigr)'=n\cdot g(x)^{n-1}\cdot g'(x)\]</div><span class="pill">Ejemplo: \(((2x+1)^3)'=6(2x+1)^2\)</span></div>
       </div>
       <div class="warning">
         <strong>Funciones pendientes para más adelante:</strong> trigonométricas y otros casos más avanzados. Aquí trabajamos con polinomios, productos, cocientes, potencias compuestas y una pequeña ampliación con exponenciales/logaritmos si la profesora lo decide.
@@ -465,12 +458,12 @@
             <li>Calcula la TVM de \(f(x)=x^2-1\) en \([-1,0]\).</li>
             <li>Calcula la TVM de \(f(x)=x^2-1\) en \([1,2]\).</li>
             <li>Explica con palabras qué significa que una TVM sea negativa.</li>
-            <li>Halla \(f^{\prime}(x)\) si \(f(x)=7\).</li>
-            <li>Halla \(f^{\prime}(x)\) si \(f(x)=x\).</li>
-            <li>Halla \(f^{\prime}(x)\) si \(f(x)=x^2\).</li>
-            <li>Halla \(f^{\prime}(x)\) si \(f(x)=3x^2-5x+1\).</li>
-            <li>Halla \(f^{\prime}(x)\) si \(f(x)=(2x+1)^3\).</li>
-            <li>Halla \(f^{\prime}(x)\) si \(f(x)=(x+1)(x^2-3)\).</li>
+            <li>Halla \(f\'(x)\) si \(f(x)=7\).</li>
+            <li>Halla \(f\'(x)\) si \(f(x)=x\).</li>
+            <li>Halla \(f\'(x)\) si \(f(x)=x^2\).</li>
+            <li>Halla \(f\'(x)\) si \(f(x)=3x^2-5x+1\).</li>
+            <li>Halla \(f\'(x)\) si \(f(x)=(2x+1)^3\).</li>
+            <li>Halla \(f\'(x)\) si \(f(x)=(x+1)(x^2-3)\).</li>
             <li>Indica una función que tenga derivada positiva para \(x=2\).</li>
           </ol>
           <button class="warn" type="button" onclick="imprimirFicha()">Imprimir solo la ficha</button>
@@ -510,10 +503,6 @@
       if(Math.abs(rounded) < 1e-10) return '0';
       return String(rounded);
     }
-    function xMinusA(a){
-      const v = fmt(a);
-      return a < 0 ? `x-(${v})` : `x-${v}`;
-    }
 
     function renderMath(root){
       if(window.MathJax && window.MathJax.typesetPromise){
@@ -525,51 +514,17 @@
       return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
-    function texify(str){
-      let t = String(str)
-        .replace(/\\'/g, "'")
-        .replace(/−/g,'-')
-        .replace(/·/g,'\\cdot ')
-        .replace(/²/g,'^2')
-        .replace(/³/g,'^3')
-        .replace(/⁴/g,'^4')
-        .replace(/⁵/g,'^5')
-        .replace(/ⁿ/g,'^n')
-        .replace(/⁻¹/g,'^{-1}')
-        .replace(/\s+/g,' ')
-        .trim();
-      t = t
-        .replace(/\[2x\(x-2\)-\(x\^2\+1\)\]\/\(x-2\)\^2/g,'\\frac{2x(x-2)-(x^2+1)}{(x-2)^2}')
-        .replace(/\[2x\(x-2\)\+\(x\^2\+1\)\]\/\(x-2\)\^2/g,'\\frac{2x(x-2)+(x^2+1)}{(x-2)^2}')
-        .replace(/\(x\^2\+1\)\/\(x-2\)/g,'\\frac{x^2+1}{x-2}')
-        .replace(/2x\/\(1\)/g,'\\frac{2x}{1}')
-        .replace(/f'\/g'/g,"\\frac{f'}{g'}");
-      t = t
-        .replace(/f'/g, 'f^{\\prime}')
-        .replace(/g'/g, 'g^{\\prime}');
-      return t;
-    }
-
-    function isMathLike(str){
-      const t = String(str).trim();
-      if(!t) return false;
-      if(/[=^²³⁴⁵ⁿ\/()\[\]·−+]/.test(t)) return true;
-      if(/(^|\s)(x|h|a|f|g)(\s|$)/.test(t)) return true;
-      if(/^[-−]?\d+(,\d+|\.\d+)?$/.test(t)) return true;
-      if(/^\d*x$/.test(t)) return true;
-      return false;
-    }
-
-    function formatAnswer(str){
-      return isMathLike(str) ? `<span class="math-opt">${mathInline(str)}</span>` : escapeHtml(str);
+    function inlineTex(tex){
+      return `\(${tex}\)`;
     }
 
     function escapeHtml(str){
-      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
-    function mathInline(str){
-      return `\\(${texify(str)}\\)`;
+    function optionHtml(op){
+      if(op.tex) return inlineTex(op.tex);
+      return escapeHtml(op.text ?? op.id);
     }
 
     function calcularTVM(){
@@ -640,16 +595,15 @@
       const a = parseFloat(document.getElementById('aLim').value);
       const res = document.getElementById('resLim');
       if(!isFinite(a)){ res.innerHTML='<span class="bad">Introduce un valor válido para a.</span>'; return; }
+      const f = funcs[key].f;
       const deriv = funcs[key].fp(a);
       let deduccion = '';
-      if(key==='c') deduccion = "Como f(a+h) y f(a) valen siempre 5, el numerador es 0. Por eso f′(a)=0.";
-      if(key==='x') deduccion = "El cociente queda h/h, por eso f′(a)=1.";
+      if(key==='c') deduccion = 'Como f(a+h) y f(a) valen siempre 5, el numerador es 0. Por eso f\'(a)=0.';
+      if(key==='x') deduccion = 'El cociente queda h/h, por eso f\'(a)=1.';
       if(key==='x2') deduccion = 'Al desarrollar (a+h)²−a² queda 2ah+h². Al dividir entre h queda 2a+h, que se acerca a 2a.';
-      if(key==='x2minus1') deduccion = "El −1 se cancela. Se obtiene la misma derivada que en x²: f′(a)=2a.";
+      if(key==='x2minus1') deduccion = 'El −1 se cancela. Se obtiene la misma derivada que en x²: f\'(a)=2a.';
       res.innerHTML = String.raw`<p><strong>${funcs[key].name}</strong> en a=${fmt(a)}</p>
-        <div class="formula">\[f^{\prime}(${fmt(a)})=\lim_{x\to ${fmt(a)}}\dfrac{f(x)-f(${fmt(a)})}{${xMinusA(a)}}\]</div>
-        <p class="math-help">Para hacer la tabla usamos \(x=a+h\). En este caso, \(x=${fmt(a)}+h\) y \(x-a=h\).</p>
-        <div class="formula">\[f^{\prime}(${fmt(a)})=\lim_{h\to 0}\dfrac{f(${fmt(a)}+h)-f(${fmt(a)})}{h}=${fmt(deriv)}\]</div>
+        <div class="formula">\[f'(${fmt(a)})=\lim_{h\to 0}\frac{f(${fmt(a)}+h)-f(${fmt(a)})}{h}=${fmt(deriv)}\]</div>
         <p>${deduccion}</p>`;
       construirTablaLim(key, a);
       renderMath(res);
@@ -659,27 +613,31 @@
     function construirTablaLim(key,a){
       const f = funcs[key].f;
       const hs=[1,0.5,0.1,0.01,-0.01,-0.1,-0.5];
-      let html = String.raw`<table style="width:100%; border-collapse:collapse"><thead><tr><th style="text-align:left;border-bottom:1px solid var(--borde);padding:8px">\(h\)</th><th style="text-align:left;border-bottom:1px solid var(--borde);padding:8px"><span class="math-opt">\(\displaystyle\frac{f(a+h)-f(a)}{h}\)</span></th></tr></thead><tbody>`;
+      let html=String.raw`<table style="width:100%; border-collapse:collapse"><thead><tr>
+        <th style="text-align:left;border-bottom:1px solid var(--borde);padding:8px">\(h\)</th>
+        <th style="text-align:left;border-bottom:1px solid var(--borde);padding:8px">\(\displaystyle\frac{f(a+h)-f(a)}{h}\)</th>
+      </tr></thead><tbody>`;
       hs.forEach(h=>{
         const q=(f(a+h)-f(a))/h;
         html += `<tr><td style="padding:8px;border-bottom:1px solid var(--borde)">${fmt(h)}</td><td style="padding:8px;border-bottom:1px solid var(--borde)">${fmt(q)}</td></tr>`;
       });
       html+='</tbody></table>';
-      document.getElementById('tablaLim').innerHTML=html;
-      renderMath(document.getElementById('tablaLim'));
+      const tabla = document.getElementById('tablaLim');
+      tabla.innerHTML=html;
+      renderMath(tabla);
     }
 
     const ejercicios = [
-      {f:'f(x)=7', ans:'f^{\prime}(x)=0', rule:'constante', exp:'La derivada de una constante es 0.', choices:['f^{\prime}(x)=7','f^{\prime}(x)=0','f^{\prime}(x)=x','f^{\prime}(x)=1']},
-      {f:'f(x)=x', ans:'f^{\prime}(x)=1', rule:'función identidad', exp:'La derivada de x es 1.', choices:['f^{\prime}(x)=x','f^{\prime}(x)=0','f^{\prime}(x)=1','f^{\prime}(x)=2x']},
-      {f:'f(x)=x²', ans:'f^{\prime}(x)=2x', rule:'potencia', exp:'Bajamos el 2 y restamos 1 al exponente.', choices:['f^{\prime}(x)=x','f^{\prime}(x)=2x','f^{\prime}(x)=x²','f^{\prime}(x)=2']},
-      {f:'f(x)=3x²−5x+1', ans:'f^{\prime}(x)=6x−5', rule:'suma/resta y potencia', exp:'Derivamos término a término: 3x² → 6x, −5x → −5, 1 → 0.', choices:['f^{\prime}(x)=3x−5','f^{\prime}(x)=6x−5','f^{\prime}(x)=6x+1','f^{\prime}(x)=x²−5']},
-      {f:'f(x)=x⁴−2x²', ans:'f^{\prime}(x)=4x³−4x', rule:'potencia y suma/resta', exp:'x⁴ deriva 4x³ y −2x² deriva −4x.', choices:['f^{\prime}(x)=4x³−4x','f^{\prime}(x)=4x−4','f^{\prime}(x)=x³−2x','f^{\prime}(x)=4x³−2x']},
-      {f:'f(x)=(2x+1)³', ans:'f^{\prime}(x)=6(2x+1)²', rule:'cadena', exp:'Derivada exterior: 3(2x+1)². Derivada interior: 2. Multiplicamos.', choices:['f^{\prime}(x)=3(2x+1)²','f^{\prime}(x)=6(2x+1)²','f^{\prime}(x)=(2x+1)²','f^{\prime}(x)=6(2x+1)']},
-      {f:'f(x)=(x²+1)⁴', ans:'f^{\prime}(x)=8x(x²+1)³', rule:'cadena', exp:'Derivada exterior: 4(x²+1)³. Derivada interior: 2x.', choices:['f^{\prime}(x)=4(x²+1)³','f^{\prime}(x)=8x(x²+1)³','f^{\prime}(x)=4x(x²+1)³','f^{\prime}(x)=8x(x²+1)⁴']},
-      {f:'f(x)=(x+1)(x²−3)', ans:'f^{\prime}(x)=(x²−3)+2x(x+1)', rule:'producto', exp:'Producto: f^{\prime}g + fg\'. Aquí (x+1)\'=1 y (x²−3)\'=2x.', choices:['f^{\prime}(x)=2x','f^{\prime}(x)=(x²−3)+2x(x+1)','f^{\prime}(x)=2x²−3','f^{\prime}(x)=(x+1)+(x²−3)']},
-      {f:'f(x)=(x²+1)/(x−2)', ans:'f^{\prime}(x)=[2x(x−2)−(x²+1)]/(x−2)²', rule:'cociente', exp:'Cociente: derivada de arriba por abajo menos arriba por derivada de abajo, todo entre abajo al cuadrado.', choices:['f^{\prime}(x)=2x/(1)','f^{\prime}(x)=[2x(x−2)−(x²+1)]/(x−2)²','f^{\prime}(x)=[2x(x−2)+(x²+1)]/(x−2)²','f^{\prime}(x)=(2x−1)/(x−2)']},
-      {f:'f(x)=4(x−3)⁵', ans:'f^{\prime}(x)=20(x−3)⁴', rule:'número por función y cadena', exp:'El 4 se mantiene. (x−3)⁵ deriva 5(x−3)⁴·1.', choices:['f^{\prime}(x)=5(x−3)⁴','f^{\prime}(x)=20(x−3)⁴','f^{\prime}(x)=20(x−3)⁵','f^{\prime}(x)=4(x−3)⁴']}
+      {fTex:"f(x)=7", ans:'cero', ansTex:"f'(x)=0", rule:'constante', exp:'La derivada de una constante es 0.', choices:[{id:'siete',tex:"f'(x)=7"},{id:'cero',tex:"f'(x)=0"},{id:'x',tex:"f'(x)=x"},{id:'uno',tex:"f'(x)=1"}]},
+      {fTex:"f(x)=x", ans:'uno', ansTex:"f'(x)=1", rule:'función identidad', exp:'La derivada de x es 1.', choices:[{id:'x',tex:"f'(x)=x"},{id:'cero',tex:"f'(x)=0"},{id:'uno',tex:"f'(x)=1"},{id:'dosx',tex:"f'(x)=2x"}]},
+      {fTex:"f(x)=x^2", ans:'dosx', ansTex:"f'(x)=2x", rule:'potencia', exp:'Bajamos el 2 y restamos 1 al exponente.', choices:[{id:'x',tex:"f'(x)=x"},{id:'dosx',tex:"f'(x)=2x"},{id:'x2',tex:"f'(x)=x^2"},{id:'dos',tex:"f'(x)=2"}]},
+      {fTex:"f(x)=3x^2-5x+1", ans:'6x-5', ansTex:"f'(x)=6x-5", rule:'suma/resta y potencia', exp:'Derivamos término a término: 3x² → 6x, −5x → −5, 1 → 0.', choices:[{id:'3x-5',tex:"f'(x)=3x-5"},{id:'6x-5',tex:"f'(x)=6x-5"},{id:'6x+1',tex:"f'(x)=6x+1"},{id:'x2-5',tex:"f'(x)=x^2-5"}]},
+      {fTex:"f(x)=x^4-2x^2", ans:'4x3-4x', ansTex:"f'(x)=4x^3-4x", rule:'potencia y suma/resta', exp:'x⁴ deriva 4x³ y −2x² deriva −4x.', choices:[{id:'4x3-4x',tex:"f'(x)=4x^3-4x"},{id:'4x-4',tex:"f'(x)=4x-4"},{id:'x3-2x',tex:"f'(x)=x^3-2x"},{id:'4x3-2x',tex:"f'(x)=4x^3-2x"}]},
+      {fTex:"f(x)=(2x+1)^3", ans:'cadena1', ansTex:"f'(x)=6(2x+1)^2", rule:'cadena', exp:'Derivada exterior: 3(2x+1)². Derivada interior: 2. Multiplicamos.', choices:[{id:'3',tex:"f'(x)=3(2x+1)^2"},{id:'cadena1',tex:"f'(x)=6(2x+1)^2"},{id:'sin3',tex:"f'(x)=(2x+1)^2"},{id:'sin2',tex:"f'(x)=6(2x+1)"}]},
+      {fTex:"f(x)=(x^2+1)^4", ans:'cadena2', ansTex:"f'(x)=8x(x^2+1)^3", rule:'cadena', exp:'Derivada exterior: 4(x²+1)³. Derivada interior: 2x.', choices:[{id:'4',tex:"f'(x)=4(x^2+1)^3"},{id:'cadena2',tex:"f'(x)=8x(x^2+1)^3"},{id:'4x',tex:"f'(x)=4x(x^2+1)^3"},{id:'8x4',tex:"f'(x)=8x(x^2+1)^4"}]},
+      {fTex:"f(x)=(x+1)(x^2-3)", ans:'producto', ansTex:"f'(x)=(x^2-3)+2x(x+1)", rule:'producto', exp:'Producto: derivada del primer factor por el segundo, más el primero por la derivada del segundo.', choices:[{id:'2x',tex:"f'(x)=2x"},{id:'producto',tex:"f'(x)=(x^2-3)+2x(x+1)"},{id:'2x2',tex:"f'(x)=2x^2-3"},{id:'sumamal',tex:"f'(x)=(x+1)+(x^2-3)"}]},
+      {fTex:String.raw`f(x)=\frac{x^2+1}{x-2}`, ans:'cociente', ansTex:String.raw`f'(x)=\frac{2x(x-2)-(x^2+1)}{(x-2)^2}`, rule:'cociente', exp:'Cociente: derivada de arriba por abajo menos arriba por derivada de abajo, todo entre abajo al cuadrado.', choices:[{id:'2x1',tex:String.raw`f'(x)=\frac{2x}{1}`},{id:'cociente',tex:String.raw`f'(x)=\frac{2x(x-2)-(x^2+1)}{(x-2)^2}`},{id:'suma',tex:String.raw`f'(x)=\frac{2x(x-2)+(x^2+1)}{(x-2)^2}`},{id:'lineal',tex:String.raw`f'(x)=\frac{2x-1}{x-2}`}]},
+      {fTex:"f(x)=4(x-3)^5", ans:'20', ansTex:"f'(x)=20(x-3)^4", rule:'número por función y cadena', exp:'El 4 se mantiene. (x−3)⁵ deriva 5(x−3)⁴·1.', choices:[{id:'5',tex:"f'(x)=5(x-3)^4"},{id:'20',tex:"f'(x)=20(x-3)^4"},{id:'20p5',tex:"f'(x)=20(x-3)^5"},{id:'4',tex:"f'(x)=4(x-3)^4"}]}
     ];
     let currentExercise = null, practiceOk=0, practiceTotal=0;
 
@@ -687,10 +645,10 @@
     function nuevoEjercicio(){
       currentExercise = ejercicios[Math.floor(Math.random()*ejercicios.length)];
       document.getElementById('exTitle').textContent = 'Deriva la función';
-      document.getElementById('exFormula').innerHTML = mathInline(currentExercise.f);
+      document.getElementById('exFormula').innerHTML = inlineTex(currentExercise.fTex);
       document.getElementById('exFeedback').innerHTML = 'Elige una opción. Piensa primero qué regla necesitas.';
       const choices = shuffle(currentExercise.choices);
-      document.getElementById('choices').innerHTML = choices.map(c=>`<button type="button" class="choice" data-value="${escapeAttr(c)}" onclick="responderEjercicio(this)">${mathInline(c)}</button>`).join('');
+      document.getElementById('choices').innerHTML = choices.map(c=>`<button type="button" class="choice" data-id="${escapeAttr(c.id)}" onclick="responderEjercicio(this)">${inlineTex(c.tex)}</button>`).join('');
       renderMath(document.getElementById('practica'));
     }
     function responderEjercicio(btn){
@@ -698,12 +656,12 @@
       const buttons = document.querySelectorAll('#choices .choice');
       buttons.forEach(b=>b.disabled=true);
       practiceTotal++;
-      const ok = btn.dataset.value === currentExercise.ans;
+      const ok = btn.dataset.id === currentExercise.ans;
       if(ok){ practiceOk++; btn.classList.add('correct'); }
-      else{ btn.classList.add('incorrect'); buttons.forEach(b=>{ if(b.dataset.value===currentExercise.ans) b.classList.add('correct'); }); }
+      else{ btn.classList.add('incorrect'); buttons.forEach(b=>{ if(b.dataset.id===currentExercise.ans) b.classList.add('correct'); }); }
       document.getElementById('exFeedback').innerHTML = ok ?
         `<span class="ok">Correcto.</span> Regla usada: <strong>${currentExercise.rule}</strong>. ${currentExercise.exp}` :
-        `<span class="bad">Revisa.</span> La respuesta correcta es <strong>${mathInline(currentExercise.ans)}</strong>. ${currentExercise.exp}`;
+        `<span class="bad">Revisa.</span> La respuesta correcta es <strong>${inlineTex(currentExercise.ansTex)}</strong>. ${currentExercise.exp}`;
       renderMath(document.getElementById('exFeedback'));
       actualizarPracticeScore();
     }
@@ -713,9 +671,9 @@
     }
     function mostrarSolucion(){
       if(!currentExercise) nuevoEjercicio();
-      document.getElementById('exFeedback').innerHTML = `<strong>Solución:</strong> ${mathInline(currentExercise.ans)}<br>${currentExercise.exp}`;
+      document.getElementById('exFeedback').innerHTML = `<strong>Solución:</strong> ${inlineTex(currentExercise.ansTex)}<br>${currentExercise.exp}`;
       renderMath(document.getElementById('exFeedback'));
-      document.querySelectorAll('#choices .choice').forEach(b=>{ if(b.dataset.value===currentExercise.ans) b.classList.add('correct'); });
+      document.querySelectorAll('#choices .choice').forEach(b=>{ if(b.dataset.id===currentExercise.ans) b.classList.add('correct'); });
     }
     function actualizarPracticeScore(){
       const pct = practiceTotal ? Math.round(100*practiceOk/practiceTotal) : 0;
@@ -724,60 +682,63 @@
     }
 
     const quiz = [
-      {q:'La TVM de f(x)=x²−1 en [-1,0] es…', a:'−1', opts:['−1','0','1','3']},
-      {q:'La TVM de f(x)=x²−1 en [1,2] es…', a:'3', opts:['−1','1','2','3']},
-      {q:'Si f(x)=5, entonces f^{\prime}(x)=…', a:'0', opts:['0','1','5','x']},
-      {q:'Si f(x)=x², entonces f^{\prime}(x)=…', a:'2x', opts:['x','2x','x²','2']},
-      {q:'La derivada de f(x)=3x²−5x+1 es…', a:'6x−5', opts:['3x−5','6x−5','6x+1','x²−5x']},
-      {q:'Si f^{\prime}(a)>0, la función en ese punto tiende a…', a:'crecer', opts:['crecer','decrecer','ser constante siempre','no existir']},
-      {q:'La regla de la cadena aparece en…', a:'f(x)=(2x+1)³', opts:['f(x)=x²+1','f(x)=7','f(x)=(2x+1)³','f(x)=x']},
-      {q:'La derivada de f(x)=(x²+1)⁴ es…', a:'8x(x²+1)³', opts:['4(x²+1)³','8x(x²+1)³','8x(x²+1)⁴','4x²(x²+1)³']},
-      {q:'En un producto f·g, la derivada correcta es…', a:'f^{\prime}·g + f·g\'', opts:['f^{\prime}·g\'','f^{\prime}·g + f·g\'','f+g','f^{\prime}/g\'']},
-      {q:'¿Qué familia de funciones NO se trabaja aquí?', a:'trigonométricas', opts:['polinómicas','trigonométricas','constantes','potencias']}
+      {q:`La TVM de ${inlineTex('f(x)=x^2-1')} en ${inlineTex('[-1,0]')} es…`, a:'m1', opts:[{id:'m1',tex:'-1'},{id:'0',tex:'0'},{id:'1',tex:'1'},{id:'3',tex:'3'}]},
+      {q:`La TVM de ${inlineTex('f(x)=x^2-1')} en ${inlineTex('[1,2]')} es…`, a:'3', opts:[{id:'m1',tex:'-1'},{id:'1',tex:'1'},{id:'2',tex:'2'},{id:'3',tex:'3'}]},
+      {q:`Si ${inlineTex('f(x)=5')}, entonces ${inlineTex("f'(x)=\,?")}`, a:'0', opts:[{id:'0',tex:'0'},{id:'1',tex:'1'},{id:'5',tex:'5'},{id:'x',tex:'x'}]},
+      {q:`Si ${inlineTex('f(x)=x^2')}, entonces ${inlineTex("f'(x)=\,?")}`, a:'2x', opts:[{id:'x',tex:'x'},{id:'2x',tex:'2x'},{id:'x2',tex:'x^2'},{id:'2',tex:'2'}]},
+      {q:`La derivada de ${inlineTex('f(x)=3x^2-5x+1')} es…`, a:'6x-5', opts:[{id:'3x-5',tex:'3x-5'},{id:'6x-5',tex:'6x-5'},{id:'6x+1',tex:'6x+1'},{id:'x2-5x',tex:'x^2-5x'}]},
+      {q:`Si ${inlineTex("f'(a)>0")}, la función en ese punto tiende a…`, a:'crecer', opts:[{id:'crecer',text:'crecer'},{id:'decrecer',text:'decrecer'},{id:'constante',text:'ser constante siempre'},{id:'no',text:'no existir'}]},
+      {q:'La regla de la cadena aparece en…', a:'cadena', opts:[{id:'suma',tex:'f(x)=x^2+1'},{id:'constante',tex:'f(x)=7'},{id:'cadena',tex:'f(x)=(2x+1)^3'},{id:'identidad',tex:'f(x)=x'}]},
+      {q:`La derivada de ${inlineTex('f(x)=(x^2+1)^4')} es…`, a:'8x', opts:[{id:'4',tex:'4(x^2+1)^3'},{id:'8x',tex:'8x(x^2+1)^3'},{id:'8x4',tex:'8x(x^2+1)^4'},{id:'4x2',tex:'4x^2(x^2+1)^3'}]},
+      {q:`En un producto ${inlineTex('f\\cdot g')}, la derivada correcta es…`, a:'prod', opts:[{id:'mal1',tex:"f'\\cdot g'"},{id:'prod',tex:"f'\\cdot g+f\\cdot g'"},{id:'sum',tex:'f+g'},{id:'div',tex:String.raw`\frac{f'}{g'}`}]},
+      {q:'¿Qué familia de funciones NO se trabaja aquí?', a:'trig', opts:[{id:'poli',text:'polinómicas'},{id:'trig',text:'trigonométricas'},{id:'const',text:'constantes'},{id:'pot',text:'potencias'}]}
     ];
+    const quizSelected = {};
 
     function construirQuiz(){
       const box=document.getElementById('quizBox');
+      Object.keys(quizSelected).forEach(k=>delete quizSelected[k]);
       box.innerHTML = quiz.map((item,i)=>{
-        const opts = item.opts.map((op,j)=>`
-          <label class="quiz-option">
-            <input type="radio" name="q${i}" value="${escapeAttr(op)}"> ${formatAnswer(op)}
-          </label>`).join('');
-        return `<div class="mini" style="margin:12px 0"><strong>${i+1}. ${item.q}</strong>${opts}<div id="qfb${i}" class="tiny"></div></div>`;
+        const opts = item.opts.map(op=>`<button type="button" class="quiz-btn" data-q="${i}" data-id="${escapeAttr(op.id)}" onclick="seleccionarQuiz(this)">${optionHtml(op)}</button>`).join('');
+        return `<div class="mini quiz-item"><div class="quiz-question">${i+1}. ${item.q}</div><div class="quiz-options">${opts}</div><div id="qfb${i}" class="tiny"></div></div>`;
       }).join('');
       renderMath(box);
+    }
+    function seleccionarQuiz(btn){
+      const q = btn.dataset.q;
+      quizSelected[q] = btn.dataset.id;
+      document.querySelectorAll(`.quiz-btn[data-q="${q}"]`).forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
     }
     function corregirQuiz(){
       let score=0;
       quiz.forEach((item,i)=>{
-        const chosen = document.querySelector(`input[name="q${i}"]:checked`);
+        const selected = quizSelected[i];
         const fb = document.getElementById('qfb'+i);
-        if(chosen && chosen.value===item.a){ score++; fb.innerHTML='<span class="ok">Correcto</span>'; }
-        else{ fb.innerHTML=`<span class="bad">Respuesta correcta:</span> ${formatAnswer(item.a)}`;
-          renderMath(fb); }
+        document.querySelectorAll(`.quiz-btn[data-q="${i}"]`).forEach(b=>{
+          b.classList.remove('correct','incorrect');
+          if(b.dataset.id===item.a) b.classList.add('correct');
+          if(selected && b.dataset.id===selected && selected!==item.a) b.classList.add('incorrect');
+        });
+        if(selected===item.a){ score++; fb.innerHTML='<span class="ok">Correcto</span>'; }
+        else{
+          const correcto = item.opts.find(op=>op.id===item.a);
+          fb.innerHTML=`<span class="bad">Respuesta correcta:</span> ${optionHtml(correcto)}`;
+          renderMath(fb);
+        }
       });
       const msg = score>=8 ? 'Muy bien: puedes pasar a ejercicios con más reglas.' : score>=5 ? 'Vas bien, pero conviene repetir los apartados de práctica.' : 'Necesitas repasar TVM y reglas básicas antes de avanzar.';
       document.getElementById('quizResult').innerHTML = `<p class="big-number">${score}/10</p><p>${msg}</p>`;
+      renderMath(document.getElementById('quiz'));
     }
     function reiniciarQuiz(){ construirQuiz(); document.getElementById('quizResult').innerHTML=''; }
 
 
-    const fichaPrintHTML = String.raw`
-<h2>Iniciación a las derivadas · Ficha breve</h2>
-<ol>
-  <li>Calcula la TVM de \(f(x)=x^2-1\) en \([-1,0]\).</li>
-  <li>Calcula la TVM de \(f(x)=x^2-1\) en \([1,2]\).</li>
-  <li>Explica con palabras qué significa que una TVM sea negativa.</li>
-  <li>Halla \(f^{\prime}(x)\) si \(f(x)=7\).</li>
-  <li>Halla \(f^{\prime}(x)\) si \(f(x)=x\).</li>
-  <li>Halla \(f^{\prime}(x)\) si \(f(x)=x^2\).</li>
-  <li>Halla \(f^{\prime}(x)\) si \(f(x)=3x^2-5x+1\).</li>
-  <li>Halla \(f^{\prime}(x)\) si \(f(x)=(2x+1)^3\).</li>
-  <li>Halla \(f^{\prime}(x)\) si \(f(x)=(x+1)(x^2-3)\).</li>
-  <li>Indica una función que tenga derivada positiva para \(x=2\).</li>
-</ol>`;
-
     function imprimirFicha(){
+      const ficha = document.getElementById('fichaRefuerzo');
+      if(!ficha){ window.print(); return; }
+      const copia = ficha.cloneNode(true);
+      copia.querySelectorAll('button').forEach(b=>b.remove());
       const w = window.open('', '_blank', 'width=900,height=700');
       if(!w){ alert('El navegador ha bloqueado la ventana de impresión. Permite ventanas emergentes para imprimir solo la ficha.'); return; }
       w.document.write(`<!doctype html>
@@ -785,19 +746,13 @@
 <head>
 <meta charset="utf-8">
 <title>Ficha de refuerzo · Iniciación a las derivadas</title>
-<script>
-  window.MathJax = { tex: { inlineMath: [['\\\\(', '\\\\)']], displayMath: [['\\\\[', '\\\\]']] }, svg: { fontCache: 'global' } };
-<\/script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"><\/script>
 <style>
   body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:28px;color:#111;line-height:1.55}
-  h1{color:#28348A;font-size:30px;line-height:1.15;margin:0 0 10px;font-weight:700;letter-spacing:-.02em}
-  h2{color:#28348A;font-size:20px;margin:18px 0 12px;font-weight:700}
-  ol{font-size:1.05rem;margin-top:10px}
-  li{margin:11px 0;break-inside:avoid}
+  h1,h2,h3{color:#28348A}
+  ol{font-size:1.05rem}
+  li{margin:12px 0}
   .cabecera{border-bottom:3px solid #20D9C3;margin-bottom:18px;padding-bottom:10px}
   .datos{font-size:.95rem;color:#444;margin-bottom:18px}
-  mjx-container[jax="SVG"]{display:inline-block;vertical-align:-.18em;max-width:100%}
   @page{margin:16mm}
 </style>
 </head>
@@ -806,16 +761,9 @@
   <h1>Iniciación a las derivadas · Ficha breve</h1>
   <div class="datos">Matemáticas Generales · 1.º Bachillerato General · Profesora: Cristina Ramos García</div>
 </div>
-${fichaPrintHTML}
+${copia.innerHTML}
 <script>
-  function imprimirCuandoEsteListo(){
-    if(window.MathJax && MathJax.startup && MathJax.startup.promise){
-      MathJax.startup.promise.then(function(){ setTimeout(function(){ window.print(); }, 250); });
-    } else {
-      setTimeout(imprimirCuandoEsteListo, 150);
-    }
-  }
-  imprimirCuandoEsteListo();
+  setTimeout(function(){ window.print(); }, 300);
 <\/script>
 </body>
 </html>`);
